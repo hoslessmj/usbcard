@@ -1,0 +1,9 @@
+ifneq ($(KERNELRELEASE),)
+	obj-m :=hosless.o
+else
+	KERNELDIR ?= /lib/modules/4.0.0-1-amd64/build/
+	PWD :=$(shell pwd)
+
+default:
+	$(MAKE)	-C $(KERNELDIR) M=$(PWD) modules
+endif

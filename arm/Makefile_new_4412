@@ -1,0 +1,9 @@
+ifneq ($(KERNELRELEASE),)
+	obj-m :=hosless.o
+else
+	KERNELDIR ?= /home/hosless/hosless/4412/kernel
+	PWD :=$(shell pwd)
+
+default:
+	$(MAKE)	-C $(KERNELDIR) M=$(PWD) modules
+endif
